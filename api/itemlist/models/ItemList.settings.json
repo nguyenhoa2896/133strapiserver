@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "itemList",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "item id": {
+  "type": "string"
+},
+"quantity": {
+  "type": "decimal"
+},
+"total price": {
+  "type": "decimal"
+}
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/itemLists",
+      "handler": "ItemList.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/itemLists/count",
+      "handler": "ItemList.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/itemLists/:_id",
+      "handler": "ItemList.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/itemLists",
+      "handler": "ItemList.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/itemLists/:_id",
+      "handler": "ItemList.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/itemLists/:_id",
+      "handler": "ItemList.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

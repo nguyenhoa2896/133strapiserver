@@ -1,0 +1,28 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "cart",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "user id": {
+      "type": "string"
+    },
+    "item list id": {
+      "type": "string"
+    },
+    "total price": {
+      "type": "decimal"
+    },
+    "checked out": {
+      "type": "boolean"
+    }
+  },
+  "autoPK": true,
+  "autoCreatedAt": true,
+  "autoUpdatedAt": true
+}
