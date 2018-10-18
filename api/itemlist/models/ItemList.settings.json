@@ -2,21 +2,24 @@
   "connection": "default",
   "collectionName": "",
   "info": {
-    "name": "itemList",
+    "name": "itemlist",
     "description": ""
   },
   "options": {
     "timestamps": true
   },
   "attributes": {
-    "item id": {
-  "type": "string"
-},
-"quantity": {
-  "type": "decimal"
-},
-"total price": {
-  "type": "decimal"
-}
+    "itemid": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "decimal"
+    },
+    "totalprice": {
+      "type": "decimal"
+    },
+    "cartnumber": {
+      "model": "cart"
+    }
   }
 }

@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "item",
+  "info": {
+    "name": "item",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "discount": {
+      "type": "integer",
+      "max": 99
+    },
+    "picture": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "cat": {
+      "model": "category"
+    }
+  }
+}

@@ -6,15 +6,6 @@
     "mainField": "username"
   },
   "attributes": {
-    "firstname": {
-      "type": "string"
-    },
-    "lastName": {
-      "type": "string"
-    },
-    "dateOfBirth": {
-      "type": "date"
-    },
     "username": {
       "type": "string",
       "minLength": 3,
@@ -34,10 +25,12 @@
       "configurable": false,
       "private": true
     },
-    "resetPasswordToken": {
-      "type": "string",
-      "configurable": false,
-      "private": true
+
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
     },
     "confirmed": {
       "type": "boolean",
@@ -54,9 +47,16 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
+    },
+    "dateOfBirth": {
+      "type": "date"
+    },
+    "cart": {
+      "model": "cart",
+      "via": "user"
     }
-
   },
   "autoCreatedAt": true,
-  "autoUpdatedAt": true
+  "autoUpdatedAt": true,
+  "collectionName": "users-permissions_user"
 }

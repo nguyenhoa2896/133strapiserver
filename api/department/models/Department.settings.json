@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "department",
+  "info": {
+    "name": "department",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "picture": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

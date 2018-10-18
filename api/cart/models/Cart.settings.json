@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "cart",
   "info": {
     "name": "cart",
     "description": ""
@@ -9,17 +9,20 @@
     "timestamps": true
   },
   "attributes": {
-    "user id": {
-      "type": "string"
-    },
-    "item list id": {
-      "type": "string"
-    },
     "total price": {
       "type": "decimal"
     },
     "checked out": {
       "type": "boolean"
+    },
+    "user": {
+      "model": "user",
+      "via": "cart",
+      "plugin": "users-permissions"
+    },
+    "itemLists": {
+      "collection": "itemlist",
+      "via": "cartnumber"
     }
   },
   "autoPK": true,
