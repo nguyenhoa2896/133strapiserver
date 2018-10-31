@@ -16,11 +16,10 @@
       "type": "string"
     },
     "price": {
-      "type": "decimal"
+      "type": "string"
     },
     "discount": {
-      "type": "integer",
-      "max": 99
+      "type": "string"
     },
     "picture": {
       "model": "file",

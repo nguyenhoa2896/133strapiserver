@@ -9,6 +9,9 @@
     "timestamps": true
   },
   "attributes": {
+     "totalprice": {
+      "type": "string"
+    },
     "checked out": {
       "type": "boolean"
     },

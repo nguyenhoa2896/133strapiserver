@@ -13,10 +13,10 @@
       "type": "string"
     },
     "quantity": {
-      "type": "decimal"
+      "type": "string"
     },
     "totalprice": {
-      "type": "decimal"
+      "type": "string"
     },
     "cartnumber": {
       "model": "cart"
