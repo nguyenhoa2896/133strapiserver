@@ -1,5 +1,5 @@
 {
-  "host": "${process.env.DATABASE_HOST || 'localhost'}",
+  "host": "'safe-reef-10574.herokuapp.com' || 'localhost'}",
   "port": "${process.env.DATABASE_PORT || 1337}",
   "proxy": {
     "enabled": false
