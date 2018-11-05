@@ -13,10 +13,11 @@
       "type": "string"
     },
     "picture": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload",
-      "required": false
+      "type": "string"
+    },
+    "items": {
+      "collection": "item",
+      "via": "dep"
     }
   }
 }

@@ -10,7 +10,10 @@
   },
   "attributes": {
     "date": {
-  "type": "date"
-}
+      "type": "date"
+    },
+    "description" : {
+      "type": "string"
+    }
   }
 }

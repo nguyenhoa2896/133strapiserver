@@ -21,14 +21,17 @@
     "discount": {
       "type": "string"
     },
+    "brand":{
+      "type": "string"
+    },
     "picture": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload",
-      "required": false
+      "type": "string"
     },
     "cat": {
       "model": "category"
+    },
+    "dep": {
+      "model": "department"
     }
   }
 }

@@ -12,6 +12,9 @@
     "name": {
       "type": "string"
     },
+    "picture": {
+      "type": "string"
+    },
     "items": {
       "collection": "item",
       "via": "cat"
