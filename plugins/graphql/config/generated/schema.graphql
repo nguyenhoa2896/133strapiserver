@@ -1,3 +1,175 @@
+type Cart {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  totalprice: String
+  checkedout: Boolean
+  user: UsersPermissionsUser
+  itemLists(sort: String, limit: Int, start: Int, where: JSON): [Itemlist]
+}
+
+type CartAggregator {
+  count: Int
+}
+
+type CartConnection {
+  values: [Cart]
+  groupBy: CartGroupBy
+  aggregate: CartAggregator
+}
+
+type CartConnection_id {
+  key: ID
+  connection: CartConnection
+}
+
+type CartConnectionCheckedout {
+  key: Boolean
+  connection: CartConnection
+}
+
+type CartConnectionCreatedAt {
+  key: DateTime
+  connection: CartConnection
+}
+
+type CartConnectionTotalprice {
+  key: String
+  connection: CartConnection
+}
+
+type CartConnectionUpdatedAt {
+  key: DateTime
+  connection: CartConnection
+}
+
+type CartConnectionUser {
+  key: ID
+  connection: CartConnection
+}
+
+type CartGroupBy {
+  _id: [CartConnection_id]
+  createdAt: [CartConnectionCreatedAt]
+  updatedAt: [CartConnectionUpdatedAt]
+  totalprice: [CartConnectionTotalprice]
+  checkedout: [CartConnectionCheckedout]
+  user: [CartConnectionUser]
+}
+
+input CartInput {
+  totalprice: String
+  checkedout: Boolean
+  user: ID
+  itemLists: [ID]
+}
+
+type Category {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  picture: String
+  items(sort: String, limit: Int, start: Int, where: JSON): [Item]
+}
+
+type CategoryAggregator {
+  count: Int
+}
+
+type CategoryConnection {
+  values: [Category]
+  groupBy: CategoryGroupBy
+  aggregate: CategoryAggregator
+}
+
+type CategoryConnection_id {
+  key: ID
+  connection: CategoryConnection
+}
+
+type CategoryConnectionCreatedAt {
+  key: DateTime
+  connection: CategoryConnection
+}
+
+type CategoryConnectionName {
+  key: String
+  connection: CategoryConnection
+}
+
+type CategoryConnectionPicture {
+  key: String
+  connection: CategoryConnection
+}
+
+type CategoryConnectionUpdatedAt {
+  key: DateTime
+  connection: CategoryConnection
+}
+
+type CategoryGroupBy {
+  _id: [CategoryConnection_id]
+  createdAt: [CategoryConnectionCreatedAt]
+  updatedAt: [CategoryConnectionUpdatedAt]
+  name: [CategoryConnectionName]
+  picture: [CategoryConnectionPicture]
+}
+
+input CategoryInput {
+  name: String
+  picture: String
+  items: [ID]
+}
+
+input createCartInput {
+  data: CartInput
+}
+
+type createCartPayload {
+  cart: Cart
+}
+
+input createCategoryInput {
+  data: CategoryInput
+}
+
+type createCategoryPayload {
+  category: Category
+}
+
+input createDepartmentInput {
+  data: DepartmentInput
+}
+
+type createDepartmentPayload {
+  department: Department
+}
+
+input createItemInput {
+  data: ItemInput
+}
+
+input createItemlistInput {
+  data: ItemlistInput
+}
+
+type createItemlistPayload {
+  itemlist: Itemlist
+}
+
+type createItemPayload {
+  item: Item
+}
+
+input createRecieptInput {
+  data: RecieptInput
+}
+
+type createRecieptPayload {
+  reciept: Reciept
+}
+
 input createRoleInput {
   data: RoleInput
 }
@@ -19,6 +191,54 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+input deleteCartInput {
+  where: InputID
+}
+
+type deleteCartPayload {
+  cart: Cart
+}
+
+input deleteCategoryInput {
+  where: InputID
+}
+
+type deleteCategoryPayload {
+  category: Category
+}
+
+input deleteDepartmentInput {
+  where: InputID
+}
+
+type deleteDepartmentPayload {
+  department: Department
+}
+
+input deleteItemInput {
+  where: InputID
+}
+
+input deleteItemlistInput {
+  where: InputID
+}
+
+type deleteItemlistPayload {
+  itemlist: Itemlist
+}
+
+type deleteItemPayload {
+  item: Item
+}
+
+input deleteRecieptInput {
+  where: InputID
+}
+
+type deleteRecieptPayload {
+  reciept: Reciept
+}
+
 input deleteRoleInput {
   where: InputID
 }
@@ -33,6 +253,64 @@ input deleteUserInput {
 
 type deleteUserPayload {
   user: UsersPermissionsUser
+}
+
+type Department {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  picture: String
+  items(sort: String, limit: Int, start: Int, where: JSON): [Item]
+}
+
+type DepartmentAggregator {
+  count: Int
+}
+
+type DepartmentConnection {
+  values: [Department]
+  groupBy: DepartmentGroupBy
+  aggregate: DepartmentAggregator
+}
+
+type DepartmentConnection_id {
+  key: ID
+  connection: DepartmentConnection
+}
+
+type DepartmentConnectionCreatedAt {
+  key: DateTime
+  connection: DepartmentConnection
+}
+
+type DepartmentConnectionName {
+  key: String
+  connection: DepartmentConnection
+}
+
+type DepartmentConnectionPicture {
+  key: String
+  connection: DepartmentConnection
+}
+
+type DepartmentConnectionUpdatedAt {
+  key: DateTime
+  connection: DepartmentConnection
+}
+
+type DepartmentGroupBy {
+  _id: [DepartmentConnection_id]
+  createdAt: [DepartmentConnectionCreatedAt]
+  updatedAt: [DepartmentConnectionUpdatedAt]
+  name: [DepartmentConnectionName]
+  picture: [DepartmentConnectionPicture]
+}
+
+input DepartmentInput {
+  name: String
+  picture: String
+  items: [ID]
 }
 
 input FileInput {
@@ -51,14 +329,209 @@ input InputID {
   id: ID!
 }
 
+type Item {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  description: String
+  price: String
+  discount: String
+  brand: String
+  picture: String
+  cat: Category
+  dep: Department
+}
+
+type ItemAggregator {
+  count: Int
+}
+
+type ItemConnection {
+  values: [Item]
+  groupBy: ItemGroupBy
+  aggregate: ItemAggregator
+}
+
+type ItemConnection_id {
+  key: ID
+  connection: ItemConnection
+}
+
+type ItemConnectionBrand {
+  key: String
+  connection: ItemConnection
+}
+
+type ItemConnectionCat {
+  key: ID
+  connection: ItemConnection
+}
+
+type ItemConnectionCreatedAt {
+  key: DateTime
+  connection: ItemConnection
+}
+
+type ItemConnectionDep {
+  key: ID
+  connection: ItemConnection
+}
+
+type ItemConnectionDescription {
+  key: String
+  connection: ItemConnection
+}
+
+type ItemConnectionDiscount {
+  key: String
+  connection: ItemConnection
+}
+
+type ItemConnectionName {
+  key: String
+  connection: ItemConnection
+}
+
+type ItemConnectionPicture {
+  key: String
+  connection: ItemConnection
+}
+
+type ItemConnectionPrice {
+  key: String
+  connection: ItemConnection
+}
+
+type ItemConnectionUpdatedAt {
+  key: DateTime
+  connection: ItemConnection
+}
+
+type ItemGroupBy {
+  _id: [ItemConnection_id]
+  createdAt: [ItemConnectionCreatedAt]
+  updatedAt: [ItemConnectionUpdatedAt]
+  name: [ItemConnectionName]
+  description: [ItemConnectionDescription]
+  price: [ItemConnectionPrice]
+  discount: [ItemConnectionDiscount]
+  brand: [ItemConnectionBrand]
+  picture: [ItemConnectionPicture]
+  cat: [ItemConnectionCat]
+  dep: [ItemConnectionDep]
+}
+
+input ItemInput {
+  name: String
+  description: String
+  price: String
+  discount: String
+  brand: String
+  picture: String
+  cat: ID
+  dep: ID
+}
+
+type Itemlist {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  itemid: String
+  quantity: String
+  totalprice: String
+  cartnumber: Cart
+}
+
+type ItemlistAggregator {
+  count: Int
+}
+
+type ItemlistConnection {
+  values: [Itemlist]
+  groupBy: ItemlistGroupBy
+  aggregate: ItemlistAggregator
+}
+
+type ItemlistConnection_id {
+  key: ID
+  connection: ItemlistConnection
+}
+
+type ItemlistConnectionCartnumber {
+  key: ID
+  connection: ItemlistConnection
+}
+
+type ItemlistConnectionCreatedAt {
+  key: DateTime
+  connection: ItemlistConnection
+}
+
+type ItemlistConnectionItemid {
+  key: String
+  connection: ItemlistConnection
+}
+
+type ItemlistConnectionQuantity {
+  key: String
+  connection: ItemlistConnection
+}
+
+type ItemlistConnectionTotalprice {
+  key: String
+  connection: ItemlistConnection
+}
+
+type ItemlistConnectionUpdatedAt {
+  key: DateTime
+  connection: ItemlistConnection
+}
+
+type ItemlistGroupBy {
+  _id: [ItemlistConnection_id]
+  createdAt: [ItemlistConnectionCreatedAt]
+  updatedAt: [ItemlistConnectionUpdatedAt]
+  itemid: [ItemlistConnectionItemid]
+  quantity: [ItemlistConnectionQuantity]
+  totalprice: [ItemlistConnectionTotalprice]
+  cartnumber: [ItemlistConnectionCartnumber]
+}
+
+input ItemlistInput {
+  itemid: String
+  quantity: String
+  totalprice: String
+  cartnumber: ID
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSON
 
-union Morph = UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = Cart | createCartPayload | updateCartPayload | deleteCartPayload | CartConnection | CartAggregator | CartGroupBy | CartConnection_id | CartConnectionCreatedAt | CartConnectionUpdatedAt | CartConnectionTotalprice | CartConnectionCheckedout | CartConnectionUser | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnection_id | CategoryConnectionCreatedAt | CategoryConnectionUpdatedAt | CategoryConnectionName | CategoryConnectionPicture | Department | createDepartmentPayload | updateDepartmentPayload | deleteDepartmentPayload | DepartmentConnection | DepartmentAggregator | DepartmentGroupBy | DepartmentConnection_id | DepartmentConnectionCreatedAt | DepartmentConnectionUpdatedAt | DepartmentConnectionName | DepartmentConnectionPicture | Item | createItemPayload | updateItemPayload | deleteItemPayload | ItemConnection | ItemAggregator | ItemGroupBy | ItemConnection_id | ItemConnectionCreatedAt | ItemConnectionUpdatedAt | ItemConnectionName | ItemConnectionDescription | ItemConnectionPrice | ItemConnectionDiscount | ItemConnectionBrand | ItemConnectionPicture | ItemConnectionCat | ItemConnectionDep | Itemlist | createItemlistPayload | updateItemlistPayload | deleteItemlistPayload | ItemlistConnection | ItemlistAggregator | ItemlistGroupBy | ItemlistConnection_id | ItemlistConnectionCreatedAt | ItemlistConnectionUpdatedAt | ItemlistConnectionItemid | ItemlistConnectionQuantity | ItemlistConnectionTotalprice | ItemlistConnectionCartnumber | Reciept | createRecieptPayload | updateRecieptPayload | deleteRecieptPayload | RecieptConnection | RecieptAggregator | RecieptGroupBy | RecieptConnection_id | RecieptConnectionCreatedAt | RecieptConnectionUpdatedAt | RecieptConnectionDate | RecieptConnectionDescription | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionDateOfBirth | UsersPermissionsUserConnectionCart
 
 type Mutation {
+  createCart(input: createCartInput): createCartPayload
+  updateCart(input: updateCartInput): updateCartPayload
+  deleteCart(input: deleteCartInput): deleteCartPayload
+  createCategory(input: createCategoryInput): createCategoryPayload
+  updateCategory(input: updateCategoryInput): updateCategoryPayload
+  deleteCategory(input: deleteCategoryInput): deleteCategoryPayload
+  createDepartment(input: createDepartmentInput): createDepartmentPayload
+  updateDepartment(input: updateDepartmentInput): updateDepartmentPayload
+  deleteDepartment(input: deleteDepartmentInput): deleteDepartmentPayload
+  createItem(input: createItemInput): createItemPayload
+  updateItem(input: updateItemInput): updateItemPayload
+  deleteItem(input: deleteItemInput): deleteItemPayload
+  createItemlist(input: createItemlistInput): createItemlistPayload
+  updateItemlist(input: updateItemlistInput): updateItemlistPayload
+  deleteItemlist(input: deleteItemlistInput): deleteItemlistPayload
+  createReciept(input: createRecieptInput): createRecieptPayload
+  updateReciept(input: updateRecieptInput): updateRecieptPayload
+  deleteReciept(input: deleteRecieptInput): deleteRecieptPayload
+
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
 
@@ -74,6 +547,24 @@ type Mutation {
 }
 
 type Query {
+  cart(id: ID!): Cart
+  carts(sort: String, limit: Int, start: Int, where: JSON): [Cart]
+  cartsConnection(sort: String, limit: Int, start: Int, where: JSON): CartConnection
+  category(id: ID!): Category
+  categories(sort: String, limit: Int, start: Int, where: JSON): [Category]
+  categoriesConnection(sort: String, limit: Int, start: Int, where: JSON): CategoryConnection
+  department(id: ID!): Department
+  departments(sort: String, limit: Int, start: Int, where: JSON): [Department]
+  departmentsConnection(sort: String, limit: Int, start: Int, where: JSON): DepartmentConnection
+  item(id: ID!): Item
+  items(sort: String, limit: Int, start: Int, where: JSON): [Item]
+  itemsConnection(sort: String, limit: Int, start: Int, where: JSON): ItemConnection
+  itemlist(id: ID!): Itemlist
+  itemlists(sort: String, limit: Int, start: Int, where: JSON): [Itemlist]
+  itemlistsConnection(sort: String, limit: Int, start: Int, where: JSON): ItemlistConnection
+  reciept(id: ID!): Reciept
+  reciepts(sort: String, limit: Int, start: Int, where: JSON): [Reciept]
+  recieptsConnection(sort: String, limit: Int, start: Int, where: JSON): RecieptConnection
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!): UsersPermissionsRole
@@ -88,12 +579,122 @@ type Query {
   usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
 }
 
+type Reciept {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  date: DateTime
+  description: String
+}
+
+type RecieptAggregator {
+  count: Int
+}
+
+type RecieptConnection {
+  values: [Reciept]
+  groupBy: RecieptGroupBy
+  aggregate: RecieptAggregator
+}
+
+type RecieptConnection_id {
+  key: ID
+  connection: RecieptConnection
+}
+
+type RecieptConnectionCreatedAt {
+  key: DateTime
+  connection: RecieptConnection
+}
+
+type RecieptConnectionDate {
+  key: DateTime
+  connection: RecieptConnection
+}
+
+type RecieptConnectionDescription {
+  key: String
+  connection: RecieptConnection
+}
+
+type RecieptConnectionUpdatedAt {
+  key: DateTime
+  connection: RecieptConnection
+}
+
+type RecieptGroupBy {
+  _id: [RecieptConnection_id]
+  createdAt: [RecieptConnectionCreatedAt]
+  updatedAt: [RecieptConnectionUpdatedAt]
+  date: [RecieptConnectionDate]
+  description: [RecieptConnectionDescription]
+}
+
+input RecieptInput {
+  date: DateTime
+  description: String
+}
+
 input RoleInput {
   name: String!
   description: String
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input updateCartInput {
+  where: InputID
+  data: CartInput
+}
+
+type updateCartPayload {
+  cart: Cart
+}
+
+input updateCategoryInput {
+  where: InputID
+  data: CategoryInput
+}
+
+type updateCategoryPayload {
+  category: Category
+}
+
+input updateDepartmentInput {
+  where: InputID
+  data: DepartmentInput
+}
+
+type updateDepartmentPayload {
+  department: Department
+}
+
+input updateItemInput {
+  where: InputID
+  data: ItemInput
+}
+
+input updateItemlistInput {
+  where: InputID
+  data: ItemlistInput
+}
+
+type updateItemlistPayload {
+  itemlist: Itemlist
+}
+
+type updateItemPayload {
+  item: Item
+}
+
+input updateRecieptInput {
+  where: InputID
+  data: RecieptInput
+}
+
+type updateRecieptPayload {
+  reciept: Reciept
 }
 
 input updateRoleInput {
@@ -217,9 +818,13 @@ type UploadFileGroupBy {
 input UserInput {
   username: String!
   email: String!
+  firstName: String
+  lastName: String
   confirmed: Boolean
   blocked: Boolean
   role: ID
+  dateOfBirth: DateTime
+  cart: ID
 }
 
 type UsersPermissionsPermission {
@@ -278,13 +883,18 @@ type UsersPermissionsRoleGroupBy {
   type: [UsersPermissionsRoleConnectionType]
 }
 
+"""This prepresent User Model"""
 type UsersPermissionsUser {
   _id: ID!
   username: String!
   email: String!
+  firstName: String
+  lastName: String
   confirmed: Boolean
   blocked: Boolean
   role: UsersPermissionsRole
+  dateOfBirth: DateTime
+  cart: Cart
 }
 
 type UsersPermissionsUserAggregator {
@@ -307,12 +917,32 @@ type UsersPermissionsUserConnectionBlocked {
   connection: UsersPermissionsUserConnection
 }
 
+type UsersPermissionsUserConnectionCart {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
 type UsersPermissionsUserConnectionConfirmed {
   key: Boolean
   connection: UsersPermissionsUserConnection
 }
 
+type UsersPermissionsUserConnectionDateOfBirth {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
 type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionFirstName {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionLastName {
   key: String
   connection: UsersPermissionsUserConnection
 }
@@ -331,7 +961,11 @@ type UsersPermissionsUserGroupBy {
   _id: [UsersPermissionsUserConnection_id]
   username: [UsersPermissionsUserConnectionUsername]
   email: [UsersPermissionsUserConnectionEmail]
+  firstName: [UsersPermissionsUserConnectionFirstName]
+  lastName: [UsersPermissionsUserConnectionLastName]
   confirmed: [UsersPermissionsUserConnectionConfirmed]
   blocked: [UsersPermissionsUserConnectionBlocked]
   role: [UsersPermissionsUserConnectionRole]
+  dateOfBirth: [UsersPermissionsUserConnectionDateOfBirth]
+  cart: [UsersPermissionsUserConnectionCart]
 }

@@ -12,7 +12,7 @@
      "totalprice": {
       "type": "string"
     },
-    "checked out": {
+    "checkedout": {
       "type": "boolean"
     },
     "user": {
