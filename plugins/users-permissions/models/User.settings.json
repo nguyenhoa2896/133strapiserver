@@ -25,13 +25,6 @@
       "configurable": false,
       "private": true
     },
-
-    "firstName": {
-      "type": "string"
-    },
-    "lastName": {
-      "type": "string"
-    },
     "confirmed": {
       "type": "boolean",
       "default": false,
@@ -48,6 +41,13 @@
       "plugin": "users-permissions",
       "configurable": false
     },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+
     "dateOfBirth": {
       "type": "date"
     },
