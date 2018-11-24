@@ -13,7 +13,12 @@
       "type": "date"
     },
     "description" : {
-      "type": "string"
+      "type": "json"
+    },
+    "buyer" : {
+      "model": "user",
+      "plugin": "users-permissions"
+
     }
   }
 }

@@ -10,6 +10,16 @@ const _ = require('lodash');
 
 module.exports = {
 
+  findUsersWithReciepts: async (ctx) => {
+    // Retrieve the list of users with their reciepts.
+    const users = User
+      .find()
+      .populate('reciepts');
+
+    // Send the list of users.
+    ctx.body = users;
+  },
+
   /**
    * Retrieve user records.
    *

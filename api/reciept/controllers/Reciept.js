@@ -8,6 +8,16 @@
 
 module.exports = {
 
+  findReceiptssWithBuyers: async (ctx) => {
+    // Retrieve the list of articles with their authors.
+    const articles = Article
+      .find()
+      .populate('buyer');
+
+    // Send the list of users.
+    ctx.body = users;
+  },
+
   /**
    * Retrieve reciept records.
    *

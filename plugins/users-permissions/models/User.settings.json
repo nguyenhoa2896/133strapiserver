@@ -54,6 +54,10 @@
     "cart": {
       "model": "cart",
       "via": "user"
+    },
+    "reciepts": {
+        "collection": "reciept",
+        "via": "buyer"
     }
   },
   "autoCreatedAt": true,
