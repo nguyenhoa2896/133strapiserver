@@ -18,6 +18,10 @@
     "items": {
       "collection": "item",
       "via": "dep"
+    },
+    "categories":{
+      "collection": "category",
+      "via": "department"
     }
   }
 }
