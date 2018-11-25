@@ -420,7 +420,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = Cart | createCartPayload | updateCartPayload | deleteCartPayload | CartConnection | CartAggregator | CartGroupBy | CartConnection_id | CartConnectionCreatedAt | CartConnectionUpdatedAt | CartConnectionTotalprice | CartConnectionCheckedout | CartConnectionUser | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnection_id | CategoryConnectionCreatedAt | CategoryConnectionUpdatedAt | CategoryConnectionName | CategoryConnectionPicture | Department | createDepartmentPayload | updateDepartmentPayload | deleteDepartmentPayload | DepartmentConnection | DepartmentAggregator | DepartmentGroupBy | DepartmentConnection_id | DepartmentConnectionCreatedAt | DepartmentConnectionUpdatedAt | DepartmentConnectionName | DepartmentConnectionPicture | Item | createItemPayload | updateItemPayload | deleteItemPayload | ItemConnection | ItemAggregator | ItemGroupBy | ItemConnection_id | ItemConnectionCreatedAt | ItemConnectionUpdatedAt | ItemConnectionName | ItemConnectionDescription | ItemConnectionPrice | ItemConnectionDiscount | ItemConnectionBrand | ItemConnectionPicture | ItemConnectionCat | ItemConnectionDep | Reciept | createRecieptPayload | updateRecieptPayload | deleteRecieptPayload | RecieptConnection | RecieptAggregator | RecieptGroupBy | RecieptConnection_id | RecieptConnectionCreatedAt | RecieptConnectionUpdatedAt | RecieptConnectionDate | RecieptConnectionDescription | RecieptConnectionBuyer | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionDateOfBirth | UsersPermissionsUserConnectionCart
+union Morph = Cart | createCartPayload | updateCartPayload | deleteCartPayload | CartConnection | CartAggregator | CartGroupBy | CartConnection_id | CartConnectionCreatedAt | CartConnectionUpdatedAt | CartConnectionTotalprice | CartConnectionCheckedout | CartConnectionUser | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnection_id | CategoryConnectionCreatedAt | CategoryConnectionUpdatedAt | CategoryConnectionName | CategoryConnectionPicture | Department | createDepartmentPayload | updateDepartmentPayload | deleteDepartmentPayload | DepartmentConnection | DepartmentAggregator | DepartmentGroupBy | DepartmentConnection_id | DepartmentConnectionCreatedAt | DepartmentConnectionUpdatedAt | DepartmentConnectionName | DepartmentConnectionPicture | Item | createItemPayload | updateItemPayload | deleteItemPayload | ItemConnection | ItemAggregator | ItemGroupBy | ItemConnection_id | ItemConnectionCreatedAt | ItemConnectionUpdatedAt | ItemConnectionName | ItemConnectionDescription | ItemConnectionPrice | ItemConnectionDiscount | ItemConnectionBrand | ItemConnectionPicture | ItemConnectionCat | ItemConnectionDep | Reciept | createRecieptPayload | updateRecieptPayload | deleteRecieptPayload | RecieptConnection | RecieptAggregator | RecieptGroupBy | RecieptConnection_id | RecieptConnectionCreatedAt | RecieptConnectionUpdatedAt | RecieptConnectionDate | RecieptConnectionDescription | RecieptConnectionBuyer | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionAddress | UsersPermissionsUserConnectionDateOfBirth | UsersPermissionsUserConnectionCart
 
 type Mutation {
   createCart(input: createCartInput): createCartPayload
@@ -726,6 +726,7 @@ input UserInput {
   role: ID
   firstName: String
   lastName: String
+  address: JSON
   dateOfBirth: DateTime
   cart: ID
   reciepts: [ID]
@@ -797,6 +798,7 @@ type UsersPermissionsUser {
   role: UsersPermissionsRole
   firstName: String
   lastName: String
+  address: JSON
   dateOfBirth: DateTime
   cart: Cart
   reciepts(sort: String, limit: Int, start: Int, where: JSON): [Reciept]
@@ -814,6 +816,11 @@ type UsersPermissionsUserConnection {
 
 type UsersPermissionsUserConnection_id {
   key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionAddress {
+  key: JSON
   connection: UsersPermissionsUserConnection
 }
 
@@ -871,6 +878,7 @@ type UsersPermissionsUserGroupBy {
   role: [UsersPermissionsUserConnectionRole]
   firstName: [UsersPermissionsUserConnectionFirstName]
   lastName: [UsersPermissionsUserConnectionLastName]
+  address: [UsersPermissionsUserConnectionAddress]
   dateOfBirth: [UsersPermissionsUserConnectionDateOfBirth]
   cart: [UsersPermissionsUserConnectionCart]
 }

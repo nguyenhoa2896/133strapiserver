@@ -47,7 +47,9 @@
     "lastName": {
       "type": "string"
     },
-
+    "address": {
+      "type": "json"
+    },
     "dateOfBirth": {
       "type": "date"
     },
